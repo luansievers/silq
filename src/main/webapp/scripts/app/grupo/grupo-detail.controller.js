@@ -39,6 +39,17 @@ angular.module('silq2App')
             });
         };
 
+        $scope.classificarGrupo = function() {
+            AvaliarConfigModal.open({
+                area: $scope.grupo.nomeArea
+            }).then(function(form) {
+                $state.go('grupo.classificacao', {
+                    id: $scope.grupo.id,
+                    avaliarForm: form
+                });
+            });
+        };
+
         $scope.removePesquisador = function(pesquisador) {
             Grupo.removePesquisador($stateParams.id, pesquisador.id).then(function() {
                 var index = $scope.grupo.pesquisadores.indexOf(pesquisador);

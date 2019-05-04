@@ -45,6 +45,20 @@ angular.module('silq2App')
                     }
                 }
             })
+            .state('grupo.classificacao', {
+                parent: 'grupo.detail',
+                url: '/classificacao?{avaliarForm:json}',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Classificação de grupo'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/grupo/grupo-classificacao.html',
+                        controller: 'GrupoClassificacaoController'
+                    }
+                }
+            })
             .state('grupo.new', {
                 parent: 'grupo',
                 url: '/-/new',

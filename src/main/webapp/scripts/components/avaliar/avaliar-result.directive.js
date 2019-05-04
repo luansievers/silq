@@ -9,6 +9,9 @@ angular.module('silq2App')
             },
             templateUrl: 'scripts/components/avaliar/avaliar-result.html',
             link: function($scope) {
+
+                $scope.evaluationSystem = 'QUALIS';
+
                 $scope.needRefresh = false;
 
                 $scope.$on('silq:feedback', function() {
@@ -40,8 +43,15 @@ angular.module('silq2App')
                 };
 
                 $scope.getTrabalhosCSV = function() {
-                    return createShallowResults($scope.results.trabalhos);
+                    var trabalhos = $.grep( $scope.results.trabalhos, function( n ) { return n.obj.natureza == 'Completo' });
+                    return createShallowResults(trabalhos);
                 };
+
+                $scope.getResumosCSV = function() {
+                    var resumos = $.grep( $scope.results.trabalhos, function( n ) { return n.obj.natureza != 'Completo' });
+                    return createShallowResults(resumos);
+                };
+
             }
         };
     });
