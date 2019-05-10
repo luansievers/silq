@@ -1,0 +1,89 @@
+.qualis-results > div:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.qualis-result-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+
+    p { margin: 0; }
+
+    .ver-mais {
+        font-size: 0.9em;
+    }
+}
+
+.qualis-titulo {
+    font-size: 1.05em;
+    font-weight: 600;
+}
+
+.qualis-ano {
+}
+
+.qualis-veiculo {
+}
+
+.qualis-area {
+    font-weight: 600;
+}
+
+.qualis-issn {
+    font-weight: 600;
+}
+
+.qualis-conceito-item {
+    line-height: 1.9;
+    margin-top: 2px;
+    & > div {
+        display: inline;
+    }
+    .btn {
+        margin-bottom: 1px;
+    }
+}
+
+.label-conceito {
+    font-size: 0.85em;
+    border-radius: 3px;
+    display: inline-block;
+    white-space: nowrap;
+    background: #fff;
+
+    span {
+        padding: 0px 6px;
+        border: 1px solid #ccc;
+        border-left: 0;
+        display: inline-block;
+
+        &:first-child {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+    }
+
+    .conceito {
+        background-color: darken($brand-primary, 20%);
+        border-color: darken($brand-primary, 20%);
+    }
+
+    .conceito, .similaridade {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .ano {
+        font-weight: 600;
+    }
+}
+
+.table-info-header {
+    .pagination {
+        margin: 0 0 5px 0;
+    }
+}

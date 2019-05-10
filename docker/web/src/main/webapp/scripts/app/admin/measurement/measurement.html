@@ -1,0 +1,55 @@
+<header class="text-center">
+  <h2>Medições</h2>
+  <p class="help-block">Mede algumas estatísticas do algoritmo de avaliação do sistema usando os feedbacks do usuário logado como dados de controle.</p>
+</header>
+
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+    <tr>
+      <th class="text-center" colspan="2"></th>
+      <th class="text-center" colspan="2">Sem feedback</th>
+      <th class="text-center" colspan="2">Com feedback</th>
+    </tr>
+    <tr>
+      <th class="text-center">Threshold</th>
+      <th class="text-center">N° testes</th>
+      <th class="text-center">Exatidão</th>
+      <th class="text-center">MRR</th>
+      <th class="text-center">Exatidão</th>
+      <th class="text-center">MRR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="result in results">
+      <td class="text-right">{{result.threshold | number: 3}}</td>
+      <td class="text-right">{{result.size}}</td>
+      <td class="text-right">{{result.noFeedback.match * 100 | number: 3}}%</td>
+      <td class="text-right">{{result.noFeedback.meanReciprocralRank | number: 5}}</td>
+      <td class="text-right">{{result.withFeedback.match * 100 | number: 3}}%</td>
+      <td class="text-right">{{result.withFeedback.meanReciprocralRank | number: 5}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row">
+
+  <div class="col-md-offset-2 col-md-8">
+    <h3>Comparação exatidão/MRR (Sem feedback)</h3>
+    <canvas class="chart chart-line"
+      chart-data="chart1.data"
+      chart-labels="chart1.labels"
+      chart-series="chart1.series"
+      chart-options="chart1.options">
+    </canvas>
+  </div>
+
+  <div class="col-md-offset-2 col-md-8">
+    <h3>Comparação métodos com e sem feedback</h3>
+    <canvas class="chart chart-line"
+      chart-data="chart2.data"
+      chart-labels="chart2.labels"
+      chart-series="chart2.series"
+      chart-options="chart2.options">
+    </canvas>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<h4 class="title-border">
+    <span class="glyphicon glyphicon-stats"></span>
+    Número de publicações por ano*
+</h4>
+
+<form class="row">
+    <div class="form-group col-sm-4">
+        <label>Agrupador</label>
+
+        <div>
+            <label class="checkbox-inline" ng-repeat="a in agrupador track by $index">
+                <input type="checkbox" name="agrupador[]" ng-model="a.selected" value="a.name" ng-change="reload()">{{ a.name }}
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group col-sm-8">
+        <label>Grupo conceitual</label>
+
+        <div>
+            <label class="checkbox-inline" ng-repeat="g in grupos track by $index">
+                <input type="checkbox" name="grupos[]" ng-model="g.selected" value="g.name" ng-change="reload()">{{ g.name }}
+            </label>
+        </div>
+    </div>
+</form>
+
+<canvas class="chart chart-line"
+    chart-labels="chart.labels"
+    chart-series="chart.series"
+    chart-data="chart.data"
+    chart-legend="true">
+</canvas>
+
+<p class="help-block"><sup>*</sup> Total de publicações (artigos e/ou trabalhos) que foram conceituadas com base no nível de confiança estipulado. Publicações que não obtiveram conceito não são incluídas no gráfico.</p>

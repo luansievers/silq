@@ -1,0 +1,182 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SILQ – Sistema de Integração Lattes-Qualis</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- build:css assets/styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+        <link rel="stylesheet" href="bower_components/angular-flash-alert/dist/angular-flash.css" />
+        <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css assets/styles/main.css -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body ng-app="silq2App">
+        <!--[if lt IE 9]>
+            <p class="browserupgrade">Você está usando um navegador <strong>desatualizado</strong>. Por favor, <a href="http://browsehappy.com/">atualize seu navegador</a> para melhorar sua experiência.</p>
+        <![endif]-->
+        <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
+        <div ui-view="navbar" ng-cloak=""></div>
+        <div class="container">
+            <div id="flash-message" flash-message="4000"></div>
+            <div ui-view="content-header"></div>
+            <loader ng-show="loading"></loader>
+            <div ng-hide="loading" class="main-content" ui-view="content"></div>
+
+            <div ng-include="'/scripts/app/main/footer.html'"></div>
+        </div>
+
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-39385872-2');ga('send','pageview');
+        </script>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/json3/lib/json3.js"></script>
+        <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-cache/dist/angular-cache.js"></script>
+        <script src="bower_components/Chart.js/Chart.js"></script>
+        <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
+        <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+        <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+        <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+        <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+    <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
+    <!-- injector:js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/app/account/account.js"></script>
+    <script src="scripts/app/account/activate/activate.controller.js"></script>
+    <script src="scripts/app/account/activate/activate.js"></script>
+    <script src="scripts/app/account/login/login.controller.js"></script>
+    <script src="scripts/app/account/login/login.js"></script>
+    <script src="scripts/app/account/password/password.controller.js"></script>
+    <script src="scripts/app/account/password/password.directive.js"></script>
+    <script src="scripts/app/account/password/password.js"></script>
+    <script src="scripts/app/account/register/register.controller.js"></script>
+    <script src="scripts/app/account/register/register.js"></script>
+    <script src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
+    <script src="scripts/app/account/reset/finish/reset.finish.js"></script>
+    <script src="scripts/app/account/reset/request/reset.request.controller.js"></script>
+    <script src="scripts/app/account/reset/request/reset.request.js"></script>
+    <script src="scripts/app/account/settings/settings.controller.js"></script>
+    <script src="scripts/app/account/settings/settings.js"></script>
+    <script src="scripts/app/admin/admin.js"></script>
+    <script src="scripts/app/admin/configuration/configuration.controller.js"></script>
+    <script src="scripts/app/admin/configuration/configuration.js"></script>
+    <script src="scripts/app/admin/docs/docs.js"></script>
+    <script src="scripts/app/admin/health/health.controller.js"></script>
+    <script src="scripts/app/admin/health/health.js"></script>
+    <script src="scripts/app/admin/health/health.modal.controller.js"></script>
+    <script src="scripts/app/admin/logs/logs.controller.js"></script>
+    <script src="scripts/app/admin/logs/logs.js"></script>
+    <script src="scripts/app/admin/measurement/measurement.controller.js"></script>
+    <script src="scripts/app/admin/measurement/measurement.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.controller.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.js"></script>
+    <script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management-delete-dialog.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management-detail.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management-dialog.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management.js"></script>
+    <script src="scripts/app/app.constants.js"></script>
+    <script src="scripts/app/avaliacao/avaliacao.js"></script>
+    <script src="scripts/app/avaliacao/individual/avaliacao-individual.controller.js"></script>
+    <script src="scripts/app/avaliacao/livre/avaliacao-livre.controller.js"></script>
+    <script src="scripts/app/avaliacao/livre/result/result-list.controller.js"></script>
+    <script src="scripts/app/avaliacao/livre/result/result.controller.js"></script>
+    <script src="scripts/app/error/error.js"></script>
+    <script src="scripts/app/grupo/grupo-avaliacao.controller.js"></script>
+    <script src="scripts/app/grupo/grupo-classificacao.controller.js"></script>
+    <script src="scripts/app/grupo/grupo-delete-dialog.controller.js"></script>
+    <script src="scripts/app/grupo/grupo-detail.controller.js"></script>
+    <script src="scripts/app/grupo/grupo-dialog.controller.js"></script>
+    <script src="scripts/app/grupo/grupo.controller.js"></script>
+    <script src="scripts/app/grupo/grupo.js"></script>
+    <script src="scripts/app/home/home.controller.js"></script>
+    <script src="scripts/app/home/home.js"></script>
+    <script src="scripts/app/main/main.controller.js"></script>
+    <script src="scripts/app/main/main.js"></script>
+    <script src="scripts/app/qualis/qualis.controller.js"></script>
+    <script src="scripts/app/qualis/qualis.js"></script>
+    <script src="scripts/components/avaliar/avaliar-config-modal.factory.js"></script>
+    <script src="scripts/components/avaliar/avaliar-form.directive.js"></script>
+    <script src="scripts/components/avaliar/avaliar-result-item.directive.js"></script>
+    <script src="scripts/components/avaliar/avaliar-result.directive.js"></script>
+    <script src="scripts/components/charts/chart-publicacoes-por-ano.directive.js"></script>
+    <script src="scripts/components/classificacao/classificacao-table.directive.js"></script>
+    <script src="scripts/components/confirm/confirm.directive.js"></script>
+    <script src="scripts/components/dropbox/dropbox.directive.js"></script>
+    <script src="scripts/components/form/form.directive.js"></script>
+    <script src="scripts/components/form/uib-pager.config.js"></script>
+    <script src="scripts/components/form/uib-pagination.config.js"></script>
+    <script src="scripts/components/highlight/highlight-text.directive.js"></script>
+    <script src="scripts/components/loader/loader.directive.js"></script>
+    <script src="scripts/components/navbar/navbar.controller.js"></script>
+    <script src="scripts/components/navbar/navbar.directive.js"></script>
+    <script src="scripts/components/qualis/qualis-modal.factory.js"></script>
+    <script src="scripts/components/qualis/qualis-table.directive.js"></script>
+    <script src="scripts/filters/bytes.filter.js"></script>
+    <script src="scripts/filters/capitalize.filter.js"></script>
+    <script src="scripts/filters/similarity-class.filter.js"></script>
+    <script src="scripts/filters/truncate.filter.js"></script>
+    <script src="scripts/interceptors/auth.interceptor.js"></script>
+    <script src="scripts/interceptors/errorhandler.interceptor.js"></script>
+    <script src="scripts/interceptors/loading.interceptor.js"></script>
+    <script src="scripts/services/admin/configuration.service.js"></script>
+    <script src="scripts/services/admin/logs.service.js"></script>
+    <script src="scripts/services/admin/monitoring.service.js"></script>
+    <script src="scripts/services/auth/auth.service.js"></script>
+    <script src="scripts/services/auth/authority.directive.js"></script>
+    <script src="scripts/services/auth/principal.service.js"></script>
+    <script src="scripts/services/auth/provider/auth.xauth.service.js"></script>
+    <script src="scripts/services/auth/services/account.service.js"></script>
+    <script src="scripts/services/auth/services/activate.service.js"></script>
+    <script src="scripts/services/auth/services/password.service.js"></script>
+    <script src="scripts/services/auth/services/register.service.js"></script>
+    <script src="scripts/services/avaliacao.service.js"></script>
+    <script src="scripts/services/cache.service.js"></script>
+    <script src="scripts/services/curriculum-lattes.service.js"></script>
+    <script src="scripts/services/feedback.service.js"></script>
+    <script src="scripts/services/grupo.service.js"></script>
+    <script src="scripts/services/measurement.service.js"></script>
+    <script src="scripts/services/qualis.service.js"></script>
+    <script src="scripts/services/user.service.js"></script>
+    <script src="scripts/services/util/base64.service.js"></script>
+    <script src="scripts/services/util/data-util.service.js"></script>
+    <script src="scripts/services/util/date-util.service.js"></script>
+    <script src="scripts/services/util/parse-links.service.js"></script>
+    <script src="scripts/services/util/sort.directive.js"></script>
+    <!-- endinjector -->
+    <!-- endbuild -->
+</body>
+</html>

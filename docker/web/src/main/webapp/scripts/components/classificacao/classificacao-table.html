@@ -1,0 +1,94 @@
+<table class="table table-bordered table-hover table-condensed">
+    <thead>
+    <tr>
+        <th scope="col"></th>
+        <th colspan="6">2015</th>
+        <th colspan="6">2016</th>
+        <th colspan="6">2017</th>
+        <th colspan="6">2018</th>
+        <th scope="col">Pontuação</th>
+        <th scope="col">Classificação</th>
+    </tr>
+    <tr>
+        <th scope="col"></th>
+        <th colspan="2">A1</th>
+        <th colspan="2">A2</th>
+        <th colspan="2">B1</th>
+        <th colspan="2">A1</th>
+        <th colspan="2">A2</th>
+        <th colspan="2">B1</th>
+        <th colspan="2">A1</th>
+        <th colspan="2">A2</th>
+        <th colspan="2">B1</th>
+        <th colspan="2">A1</th>
+        <th colspan="2">A2</th>
+        <th colspan="2">B1</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    <tr>
+        <th scope="col">Avaliado</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col">A</th>
+        <th scope="col">T</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="result in avaliacoes">
+        <td>{{ result.dadosGerais.nome }}</td>
+        <!--2015-->
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2015].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2015].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2015].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2015].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2015].B1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2015].B1 || 0 }}</td>
+        <!--2016-->
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2016].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2016].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2016].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2016].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2016].B1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2016].B1 || 0 }}</td>
+        <!--2017-->
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2017].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2017].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2017].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2017].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2017].B1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2017].B1 || 0 }}</td>
+        <!--2018-->
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2018].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2018].A1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2018].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2018].A2 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.artigosSICLAP[2018].B1 || 0 }}</td>
+        <td>{{ result.stats.publicacoesPorAno.trabalhosSICLAP[2018].B1 || 0 }}</td>
+        <th scope="col">{{ obterPontuacao(result.stats.publicacoesPorAno.artigosSICLAP, result.stats.publicacoesPorAno.trabalhosSICLAP) }}</th>
+        <th scope="col"> {{ obterClassificacao(result.stats.publicacoesPorAno.artigosSICLAP, result.stats.publicacoesPorAno.trabalhosSICLAP) }}</th>
+    </tr>
+    </tbody>
+</table>
