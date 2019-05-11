@@ -1,9 +1,0 @@
- ${AnsiColor.GREEN}
-  / ____|_   _| |    / __ \ 
- | (___   | | | |   | |  | |
-  \___ \  | | | |   | |  | |
-  ____) |_| |_| |___| |__| |
- |_____/|_____|______\___\_\
-
-${AnsiColor.BRIGHT_BLUE}:: SILQ 🤓  :: Running Spring Boot ${spring-boot.version} ::
-:: http://silq.inf.ufsc.br ::${AnsiColor.DEFAULT}
