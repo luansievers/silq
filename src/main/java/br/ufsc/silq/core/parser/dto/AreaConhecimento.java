@@ -1,12 +1,12 @@
 package br.ufsc.silq.core.parser.dto;
 
-import java.io.Serializable;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor

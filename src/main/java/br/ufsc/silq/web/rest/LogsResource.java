@@ -1,7 +1,6 @@
 package br.ufsc.silq.web.rest;
 
 import br.ufsc.silq.web.rest.dto.LoggerDTO;
-
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import com.codahale.metrics.annotation.Timed;

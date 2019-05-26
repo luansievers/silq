@@ -1,7 +1,9 @@
 package br.ufsc.silq.config.datasource;
 
-import javax.sql.DataSource;
-
+import br.ufsc.silq.config.JHipsterProperties;
+import br.ufsc.silq.config.Profiles;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -9,11 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-
-import br.ufsc.silq.config.Profiles;
-import br.ufsc.silq.config.JHipsterProperties;
+import javax.sql.DataSource;
 
 @Configuration
 @Profile(Profiles.TRAVIS)

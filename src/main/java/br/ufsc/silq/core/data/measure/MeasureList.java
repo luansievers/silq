@@ -1,14 +1,14 @@
 package br.ufsc.silq.core.data.measure;
 
+import br.ufsc.silq.core.data.NivelSimilaridade;
+import br.ufsc.silq.core.service.MeasurementService;
+import lombok.RequiredArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-
-import br.ufsc.silq.core.data.NivelSimilaridade;
-import br.ufsc.silq.core.service.MeasurementService;
-import lombok.RequiredArgsConstructor;
 
 /**
  * Uma lista de {@link MeasureEntry}. Define funções de cálculo sobre a lista.

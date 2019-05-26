@@ -1,10 +1,10 @@
 package br.ufsc.silq.web.rest.errors;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import lombok.Data;
 
 /**
  * DTO for transfering error message with a list of field errors.

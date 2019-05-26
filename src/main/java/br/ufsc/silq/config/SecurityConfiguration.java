@@ -1,7 +1,9 @@
 package br.ufsc.silq.config;
 
-import javax.inject.Inject;
-
+import br.ufsc.silq.security.AuthoritiesConstants;
+import br.ufsc.silq.security.Http401UnauthorizedEntryPoint;
+import br.ufsc.silq.security.xauth.TokenProvider;
+import br.ufsc.silq.security.xauth.XAuthTokenConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,10 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 
-import br.ufsc.silq.security.AuthoritiesConstants;
-import br.ufsc.silq.security.Http401UnauthorizedEntryPoint;
-import br.ufsc.silq.security.xauth.TokenProvider;
-import br.ufsc.silq.security.xauth.XAuthTokenConfigurer;
+import javax.inject.Inject;
 
 @Configuration
 @EnableWebSecurity

@@ -1,21 +1,19 @@
 package br.ufsc.silq.core.service;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.inject.Inject;
-import javax.validation.Valid;
-
-import org.springframework.security.access.AuthorizationServiceException;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import br.ufsc.silq.core.exception.SilqException;
 import br.ufsc.silq.core.forms.GrupoForm;
 import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
 import br.ufsc.silq.core.persistence.entities.Grupo;
 import br.ufsc.silq.core.persistence.entities.Usuario;
 import br.ufsc.silq.core.persistence.repository.GrupoRepository;
+import org.springframework.security.access.AuthorizationServiceException;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GrupoService {
@@ -73,8 +71,12 @@ public class GrupoService {
 	 * @return Uma lista da entidade {@link Grupo}.
 	 */
 	public List<Grupo> findAllWithPermission() {
-		return this.grupoRepository.findAllByCoordenador(this.getCoordenadorLogado());
+        return this.grupoRepository.findAllByCoordenador(this.getCoordenadorLogado());
 	}
+
+    public List<Grupo> findAllWithEspectadorPermission() {
+        return this.grupoRepository.findAllByEspectadores(this.getCoordenadorLogado());
+    }
 
 	/**
 	 * Pesquisa por um grupo com ID especificado pertencente ao usuário
@@ -84,8 +86,12 @@ public class GrupoService {
 	 * @return
 	 */
 	public Optional<Grupo> findOneWithPermission(Long id) {
-		return this.grupoRepository.findOneByIdAndCoordenador(id, this.getCoordenadorLogado());
+        return this.grupoRepository.findOneByIdAndCoordenador(id, this.getCoordenadorLogado());
 	}
+
+    public Optional<Grupo> findOneWithEspectadorPermission(Long id) {
+        return this.grupoRepository.findOneByIdAndEspectadores(id, this.getCoordenadorLogado());
+    }
 
 	/**
 	 * Retorna a entidade que representa o usuário atualmente logado.
@@ -123,16 +129,27 @@ public class GrupoService {
 		return lattes;
 	}
 
+	public void addUsuarioToGrupo(Grupo grupo, Usuario usuario) {
+	    grupo.getEspectadores().add(usuario);
+        this.grupoRepository.save(grupo);
+    }
+
 	/**
 	 * Remove um pesquisador do grupo.
 	 *
 	 * @param grupo Grupo do pesquisador.
 	 * @param curriculoId ID do currículo {@link CurriculumLattes} a ser removido do grupo.
 	 */
-	public void removePesquisador(Grupo grupo, Long curriculoId) {
-		CurriculumLattes lattes = this.curriculumService.findOneWithPermission(curriculoId).get();
-		grupo.getPesquisadores().remove(lattes);
-		this.grupoRepository.save(grupo);
-	}
+    public void removePesquisador(Grupo grupo, Long curriculoId) {
+        CurriculumLattes lattes = this.curriculumService.findOneWithPermission(curriculoId).get();
+        grupo.getPesquisadores().remove(lattes);
+        this.grupoRepository.save(grupo);
+    }
+
+    public void removeEspectador(Grupo grupo, Long espectadorId) {
+        Usuario usuario = this.usuarioService.findOneById(espectadorId).get();
+        grupo.getEspectadores().remove(usuario);
+        this.grupoRepository.save(grupo);
+    }
 
 }

@@ -1,16 +1,5 @@
 package br.ufsc.silq.core.service;
 
-import java.util.Optional;
-
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-import javax.validation.Valid;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import br.ufsc.silq.core.exception.SilqException;
 import br.ufsc.silq.core.forms.usuario.AlterarSenhaForm;
 import br.ufsc.silq.core.forms.usuario.RegisterForm;
@@ -21,6 +10,15 @@ import br.ufsc.silq.core.persistence.repository.UsuarioRepository;
 import br.ufsc.silq.core.service.util.RandomUtil;
 import br.ufsc.silq.security.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -108,6 +106,16 @@ public class UsuarioService {
 	public Optional<Usuario> findOneByEmail(String email) {
 		return this.usuarioRepository.findOneByEmail(email);
 	}
+
+    /**
+     * Retorna o usuário que possua o id especificado.
+     *
+     * @param id ID do usuário.
+     * @return A entidade {@link Usuario} que possue o ID especificado.
+     */
+    public Optional<Usuario> findOneById(Long id) {
+        return this.usuarioRepository.findOneById(id);
+    }
 
 	/**
 	 * Retorna o usuário atualmente logado. Joga uma exceção caso não exista.

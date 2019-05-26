@@ -1,11 +1,10 @@
 package br.ufsc.silq.core.cache;
 
+import br.ufsc.silq.core.data.AvaliacaoResult;
+import lombok.extern.log4j.Log4j;
 import org.joda.time.Period;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
-import br.ufsc.silq.core.data.AvaliacaoResult;
-import lombok.extern.log4j.Log4j;
 
 /**
  * Cache utilizado para guardar resultados de avaliação ({@link AvaliacaoResult}) de

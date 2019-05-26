@@ -1,30 +1,23 @@
 package br.ufsc.silq.core.parser;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-
+import br.ufsc.silq.core.exception.SilqLattesException;
+import br.ufsc.silq.core.parser.attribute.ArtigoAttributeGetter;
+import br.ufsc.silq.core.parser.attribute.AttributeGetter;
+import br.ufsc.silq.core.parser.dto.*;
+import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
+import br.ufsc.silq.core.service.DocumentManager;
+import br.ufsc.silq.core.utils.SilqDataUtils;
+import br.ufsc.silq.core.utils.SilqStringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import br.ufsc.silq.core.exception.SilqLattesException;
-import br.ufsc.silq.core.parser.attribute.ArtigoAttributeGetter;
-import br.ufsc.silq.core.parser.attribute.AttributeGetter;
-import br.ufsc.silq.core.parser.dto.AreaConhecimento;
-import br.ufsc.silq.core.parser.dto.Artigo;
-import br.ufsc.silq.core.parser.dto.DadosGeraisResult;
-import br.ufsc.silq.core.parser.dto.NaturezaPublicacao;
-import br.ufsc.silq.core.parser.dto.ParseResult;
-import br.ufsc.silq.core.parser.dto.Trabalho;
-import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
-import br.ufsc.silq.core.service.DocumentManager;
-import br.ufsc.silq.core.utils.SilqDataUtils;
-import br.ufsc.silq.core.utils.SilqStringUtils;
-import lombok.extern.slf4j.Slf4j;
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Slf4j

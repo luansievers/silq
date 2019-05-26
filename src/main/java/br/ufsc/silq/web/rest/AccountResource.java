@@ -1,11 +1,15 @@
 package br.ufsc.silq.web.rest;
 
-import java.util.Optional;
-
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
+import br.ufsc.silq.core.data.UsuarioDTO;
+import br.ufsc.silq.core.exception.SilqException;
+import br.ufsc.silq.core.forms.usuario.AlterarSenhaForm;
+import br.ufsc.silq.core.forms.usuario.RecuperarSenhaForm;
+import br.ufsc.silq.core.forms.usuario.RegisterForm;
+import br.ufsc.silq.core.forms.usuario.UsuarioUpdateForm;
+import br.ufsc.silq.core.service.MailService;
+import br.ufsc.silq.core.service.UsuarioService;
+import com.codahale.metrics.annotation.Timed;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,17 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codahale.metrics.annotation.Timed;
-
-import br.ufsc.silq.core.data.UsuarioDTO;
-import br.ufsc.silq.core.exception.SilqException;
-import br.ufsc.silq.core.forms.usuario.AlterarSenhaForm;
-import br.ufsc.silq.core.forms.usuario.RecuperarSenhaForm;
-import br.ufsc.silq.core.forms.usuario.RegisterForm;
-import br.ufsc.silq.core.forms.usuario.UsuarioUpdateForm;
-import br.ufsc.silq.core.service.MailService;
-import br.ufsc.silq.core.service.UsuarioService;
-import lombok.extern.slf4j.Slf4j;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.Optional;
 
 /**
  * Gerencia o usuário atualmente logado

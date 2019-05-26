@@ -1,10 +1,9 @@
 package br.ufsc.silq.core.service;
 
-import java.util.Locale;
-
-import javax.inject.Inject;
-import javax.mail.internet.MimeMessage;
-
+import br.ufsc.silq.config.JHipsterProperties;
+import br.ufsc.silq.core.persistence.entities.Grupo;
+import br.ufsc.silq.core.persistence.entities.Usuario;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.CharEncoding;
 import org.springframework.context.MessageSource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -14,9 +13,9 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
-import br.ufsc.silq.config.JHipsterProperties;
-import br.ufsc.silq.core.persistence.entities.Usuario;
-import lombok.extern.slf4j.Slf4j;
+import javax.inject.Inject;
+import javax.mail.internet.MimeMessage;
+import java.util.Locale;
 
 /**
  * Service for sending e-mails.
@@ -96,5 +95,18 @@ public class MailService {
 		String subject = this.messageSource.getMessage("email.reset.title", null, locale);
 		this.sendEmail(usuario.getEmail(), subject, content, false, true);
 	}
+
+    @Async
+    public void sendShareGroupMail(Usuario usuario, Grupo grupo, String baseUrl) {
+        log.debug("Sending share group e-mail to '{}'", usuario.getEmail());
+        Locale locale = Locale.forLanguageTag("pt-br");
+        Context context = new Context(locale);
+        context.setVariable("user", usuario);
+        context.setVariable("grupo", grupo);
+        context.setVariable("baseUrl", baseUrl);
+        String content = this.templateEngine.process("shareGroupEmail", context);
+        String subject = this.messageSource.getMessage("email.share.title", null, locale);
+        this.sendEmail(usuario.getEmail(), subject, content, false, true);
+    }
 
 }

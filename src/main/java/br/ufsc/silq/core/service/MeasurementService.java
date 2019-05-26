@@ -1,15 +1,5 @@
 package br.ufsc.silq.core.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StopWatch;
-
 import br.ufsc.silq.core.data.Conceito;
 import br.ufsc.silq.core.data.Conceituado;
 import br.ufsc.silq.core.data.NivelSimilaridade;
@@ -23,6 +13,14 @@ import br.ufsc.silq.core.persistence.entities.QualisEvento;
 import br.ufsc.silq.core.persistence.entities.Usuario;
 import br.ufsc.silq.core.persistence.repository.FeedbackEventoRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StopWatch;
+
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Realiza medições de valores de validação do desempenho e acurácia do algoritmo de avaliação do sistema, incluindo Precisão e Revocação.

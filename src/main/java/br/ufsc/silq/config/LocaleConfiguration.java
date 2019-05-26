@@ -1,7 +1,6 @@
 package br.ufsc.silq.config;
 
 import br.ufsc.silq.config.locale.AngularCookieLocaleResolver;
-
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.MessageSource;

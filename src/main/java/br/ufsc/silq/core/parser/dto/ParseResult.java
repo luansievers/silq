@@ -1,12 +1,12 @@
 package br.ufsc.silq.core.parser.dto;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import lombok.Data;
 import lombok.ToString;
 import net.sf.ehcache.pool.sizeof.annotations.IgnoreSizeOf;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Data
 @ToString(of = { "dadosGerais" })

@@ -1,20 +1,19 @@
 package br.ufsc.silq.core.data;
 
+import br.ufsc.silq.config.EstradosEnum;
+import br.ufsc.silq.core.parser.dto.Artigo;
+import br.ufsc.silq.core.parser.dto.Trabalho;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import br.ufsc.silq.config.EstradosEnum;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import br.ufsc.silq.core.parser.dto.Artigo;
-import br.ufsc.silq.core.parser.dto.Trabalho;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * Estatísticas de avaliação.
@@ -105,9 +104,9 @@ public class AvaliacaoStats {
         this.artigos.stream().forEach(c -> {
             map.putIfAbsent(c.getObj().getAno(), new ContadorConceitos());
             ContadorConceitos contador = map.get(c.getObj().getAno());
-
-            if (c.hasConceito()) {
-                contador.increment(c.getConceitoMaisSimilar().getConceito());
+            Conceito conceitoQualis = getConceitoQualis(c.getConceitos(), c.getObj().getAno());
+            if (conceitoQualis != null) {
+                contador.increment(conceitoQualis.getConceito());
             } else {
                 contador.increment(ContadorConceitos.SEM_CONCEITO);
             }
@@ -145,8 +144,9 @@ public class AvaliacaoStats {
             map.putIfAbsent(c.getObj().getAno(), new ContadorConceitos());
             ContadorConceitos contador = map.get(c.getObj().getAno());
             if (c.getObj().getNatureza().getDesc().contains("Completo")) {
-                if (c.hasConceito()) {
-                    contador.increment(c.getConceitoMaisSimilar().getConceito());
+                Conceito conceitoQualis = getConceitoQualis(c.getConceitos(), c.getObj().getAno());
+                if (conceitoQualis != null) {
+                    contador.increment(conceitoQualis.getConceito());
                 } else {
                     contador.increment(ContadorConceitos.SEM_CONCEITO);
                 }
@@ -187,8 +187,9 @@ public class AvaliacaoStats {
             map.putIfAbsent(c.getObj().getAno(), new ContadorConceitos());
             ContadorConceitos contador = map.get(c.getObj().getAno());
             if (!c.getObj().getNatureza().getDesc().contains("Completo")) {
-                if (c.hasConceito()) {
-                    contador.increment(c.getConceitoMaisSimilar().getConceito());
+                Conceito conceitoQualis = getConceitoQualis(c.getConceitos(), c.getObj().getAno());
+                if (conceitoQualis != null) {
+                    contador.increment(conceitoQualis.getConceito());
                 } else {
                     contador.increment(ContadorConceitos.SEM_CONCEITO);
                 }
@@ -226,18 +227,22 @@ public class AvaliacaoStats {
         ConcurrentMap<String, AtomicInteger> totalizadorMap = new ConcurrentHashMap<>();
 
         for (Conceituado<Artigo> artigo : this.getArtigos()) {
-            if (artigo.hasConceito()) {
-                Conceito conceito = artigo.getConceitoMaisSimilar();
-                totalizadorMap.putIfAbsent(conceito.getConceito(), new AtomicInteger(0));
-                totalizadorMap.get(conceito.getConceito()).incrementAndGet();
+            if(artigo.hasConceito()){
+                Conceito conceitoQualis = getConceitoQualis(artigo.getConceitos(), artigo.getObj().getAno());
+                if (conceitoQualis != null){
+                    totalizadorMap.putIfAbsent(conceitoQualis.getConceito(), new AtomicInteger(0));
+                    totalizadorMap.get(conceitoQualis.getConceito()).incrementAndGet();
+                }
             }
         }
 
         for (Conceituado<Trabalho> trabalho : this.getTrabalhos()) {
-            if (trabalho.hasConceito()) {
-                Conceito conceito = trabalho.getConceitoMaisSimilar();
-                totalizadorMap.putIfAbsent(conceito.getConceito(), new AtomicInteger(0));
-                totalizadorMap.get(conceito.getConceito()).incrementAndGet();
+            if(trabalho.hasConceito()){
+                Conceito conceitoQualis = getConceitoQualis(trabalho.getConceitos(), trabalho.getObj().getAno());
+                if (conceitoQualis != null){
+                    totalizadorMap.putIfAbsent(conceitoQualis.getConceito(), new AtomicInteger(0));
+                    totalizadorMap.get(conceitoQualis.getConceito()).incrementAndGet();
+                }
             }
         }
 
@@ -245,6 +250,13 @@ public class AvaliacaoStats {
         totalizadorMap.forEach((conceito, qtde) -> totalizador.add(new TotalizadorConceito(conceito, qtde.get())));
         Collections.sort(totalizador);
         return totalizador;
+    }
+
+    private Conceito getConceitoQualis(List<Conceito> conceitos, Integer ano) {
+            return conceitos.stream()
+                .filter(x -> ano.equals(x.getAno())|| x.getTipoConceito().equals(TipoConceito.FEEDBACK))
+                .findFirst()
+                .orElse(null);
     }
 
 

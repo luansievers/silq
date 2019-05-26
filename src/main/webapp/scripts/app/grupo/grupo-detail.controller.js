@@ -59,4 +59,14 @@ angular.module('silq2App')
                 console.error(err);
             });
         };
+
+        $scope.removeEspectador = function(espectador) {
+            Grupo.removeEspectador($stateParams.id, espectador.id).then(function() {
+                var index = $scope.grupo.espectadores.indexOf(espectador);
+                index != -1 && $scope.grupo.espectadores.splice(index, 1);
+                Flash.create('success', '<strong>Sucesso!</strong> O espectador "'+espectador.nome+'" foi removido do grupo.');
+            }).catch(function(err) {
+                console.error(err);
+            });
+        };
     });

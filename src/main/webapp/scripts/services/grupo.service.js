@@ -30,6 +30,16 @@ angular.module('silq2App')
                 return $http.delete('api/grupos/' + grupoId);
             },
 
+            share: function(grupoId, email) {
+                Cache.invalidate();
+                return $http.post('api/grupos/' + grupoId + '/share', email);
+            },
+
+            removeEspectador: function(grupoId, espectadorId) {
+                Cache.invalidate();
+                return $http.delete('api/grupos/' + grupoId + '/removeEspectador/' + espectadorId);
+            },
+
             removePesquisador: function(grupoId, pesquisadorId) {
                 Cache.invalidate();
                 return $http.delete('api/grupos/' + grupoId + '/removePesquisador/' + pesquisadorId);
@@ -46,11 +56,6 @@ angular.module('silq2App')
             },
 
             classificarGrupo: function(grupoId, avaliarForm) {
-                // var data = $http.post('api/classificar/grupo/' + grupoId, avaliarForm)
-                //     .then((response) => {
-                //         debugger
-                // });
-                // return data;
                 return $http.post('api/classificar/grupo/' + grupoId, avaliarForm);
             }
         };

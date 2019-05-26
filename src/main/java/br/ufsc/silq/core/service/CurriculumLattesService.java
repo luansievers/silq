@@ -1,19 +1,5 @@
 package br.ufsc.silq.core.service;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
-import javax.inject.Inject;
-
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StopWatch;
-import org.springframework.web.multipart.MultipartFile;
-import org.w3c.dom.Document;
-
 import br.ufsc.silq.core.exception.SilqException;
 import br.ufsc.silq.core.parser.LattesParser;
 import br.ufsc.silq.core.parser.dto.DadosGeraisResult;
@@ -24,6 +10,18 @@ import br.ufsc.silq.core.persistence.repository.CurriculumLattesRepository;
 import br.ufsc.silq.core.persistence.repository.GrupoRepository;
 import br.ufsc.silq.core.persistence.repository.UsuarioRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StopWatch;
+import org.springframework.web.multipart.MultipartFile;
+import org.w3c.dom.Document;
+
+import javax.inject.Inject;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional

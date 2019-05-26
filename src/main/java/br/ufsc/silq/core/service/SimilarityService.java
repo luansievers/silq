@@ -1,15 +1,13 @@
 package br.ufsc.silq.core.service;
 
-import java.math.BigInteger;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Table;
-import javax.validation.Valid;
-
+import br.ufsc.silq.core.data.*;
+import br.ufsc.silq.core.forms.AvaliarForm;
+import br.ufsc.silq.core.forms.QualisSearchForm;
+import br.ufsc.silq.core.persistence.entities.Feedback;
+import br.ufsc.silq.core.persistence.entities.Qualis;
+import br.ufsc.silq.core.persistence.entities.Usuario;
+import br.ufsc.silq.core.utils.SilqStringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
@@ -20,18 +18,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufsc.silq.core.data.Conceito;
-import br.ufsc.silq.core.data.Conceituavel;
-import br.ufsc.silq.core.data.NivelSimilaridade;
-import br.ufsc.silq.core.data.SimilarityResult;
-import br.ufsc.silq.core.data.TipoConceito;
-import br.ufsc.silq.core.forms.AvaliarForm;
-import br.ufsc.silq.core.forms.QualisSearchForm;
-import br.ufsc.silq.core.persistence.entities.Feedback;
-import br.ufsc.silq.core.persistence.entities.Qualis;
-import br.ufsc.silq.core.persistence.entities.Usuario;
-import br.ufsc.silq.core.utils.SilqStringUtils;
-import lombok.extern.slf4j.Slf4j;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Table;
+import javax.validation.Valid;
+import java.math.BigInteger;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Serviço de similaridade para avaliação e consulta dos dados Qualis.

@@ -1,14 +1,13 @@
 package br.ufsc.silq.core.persistence.repository;
 
+import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
 
 public interface CurriculumLattesRepository extends JpaRepository<CurriculumLattes, Long> {
 

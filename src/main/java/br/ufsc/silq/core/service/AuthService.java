@@ -1,7 +1,7 @@
 package br.ufsc.silq.core.service;
 
-import javax.inject.Inject;
-
+import br.ufsc.silq.security.xauth.Token;
+import br.ufsc.silq.security.xauth.TokenProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,8 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ufsc.silq.security.xauth.Token;
-import br.ufsc.silq.security.xauth.TokenProvider;
+import javax.inject.Inject;
 
 /**
  * Serviço de autenticação dos usuários do sistema.

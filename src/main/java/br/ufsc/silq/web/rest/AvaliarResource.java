@@ -1,27 +1,10 @@
 package br.ufsc.silq.web.rest;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.validation.Valid;
-
-import br.ufsc.silq.core.data.ClassificacaoCollectionResult;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
 import br.ufsc.silq.core.cache.AvaliacaoCache;
 import br.ufsc.silq.core.cache.CurriculumCache;
 import br.ufsc.silq.core.data.AvaliacaoCollectionResult;
 import br.ufsc.silq.core.data.AvaliacaoResult;
+import br.ufsc.silq.core.data.ClassificacaoCollectionResult;
 import br.ufsc.silq.core.exception.SilqException;
 import br.ufsc.silq.core.exception.SilqLattesException;
 import br.ufsc.silq.core.forms.AvaliarForm;
@@ -33,6 +16,16 @@ import br.ufsc.silq.core.service.GrupoService;
 import br.ufsc.silq.web.rest.exception.HttpNotFound;
 import br.ufsc.silq.web.rest.form.AvaliacaoLivreForm;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -134,7 +127,10 @@ public class AvaliarResource {
 	@RequestMapping(value = "/avaliar/grupo/{grupoId}", method = RequestMethod.POST)
 	public ResponseEntity<AvaliacaoCollectionResult> avaliarGrupo(@PathVariable Long grupoId,
 			@Valid @RequestBody AvaliarForm avaliarForm) throws SilqLattesException {
-		Grupo grupo = this.grupoService.findOneWithPermission(grupoId).orElseThrow(() -> new HttpNotFound("Grupo não encontrado"));
+        Grupo grupo = this.grupoService.findOneWithEspectadorPermission(grupoId).orElse(null);
+        if (grupo == null){
+            grupo = this.grupoService.findOneWithPermission(grupoId).orElseThrow(() -> new HttpNotFound("Grupo não encontrado"));
+        }
 		AvaliacaoCollectionResult result = this.avaliacaoService.avaliarCollection(grupo.getPesquisadores(), avaliarForm);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
@@ -142,8 +138,10 @@ public class AvaliarResource {
     @RequestMapping(value = "/classificar/grupo/{grupoId}", method = RequestMethod.POST)
     public ResponseEntity<ClassificacaoCollectionResult> classificarGrupo(@PathVariable Long grupoId,
                                                                   @Valid @RequestBody AvaliarForm avaliarForm) throws SilqLattesException {
-        Grupo grupo = this.grupoService.findOneWithPermission(grupoId).orElseThrow(() -> new HttpNotFound("Grupo não encontrado"));
-
+        Grupo grupo = this.grupoService.findOneWithEspectadorPermission(grupoId).orElse(null);
+        if (grupo == null){
+            grupo = this.grupoService.findOneWithPermission(grupoId).orElseThrow(() -> new HttpNotFound("Grupo não encontrado"));
+        }
         ClassificacaoCollectionResult result = this.avaliacaoService.classificarCollection(grupo.getPesquisadores(), avaliarForm);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

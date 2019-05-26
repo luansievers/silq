@@ -1,11 +1,10 @@
 package br.ufsc.silq.core.cache;
 
+import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
+import lombok.extern.slf4j.Slf4j;
 import org.joda.time.Period;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
-import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Cache utilizado para guardar os currículos Lattes enviados de forma

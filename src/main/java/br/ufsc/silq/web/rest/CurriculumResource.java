@@ -1,9 +1,9 @@
 package br.ufsc.silq.web.rest;
 
-import java.io.IOException;
-
-import javax.inject.Inject;
-
+import br.ufsc.silq.core.exception.SilqException;
+import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
+import br.ufsc.silq.core.service.UsuarioService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.ufsc.silq.core.exception.SilqException;
-import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
-import br.ufsc.silq.core.service.UsuarioService;
-import lombok.extern.slf4j.Slf4j;
+import javax.inject.Inject;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/curriculum")

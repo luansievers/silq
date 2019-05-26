@@ -1,30 +1,18 @@
 package br.ufsc.silq.core.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -33,6 +21,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @ToString(of = { "id", "nome" })
+@EqualsAndHashCode(of = { "id" })
 public class Usuario {
 
 	@Id
@@ -67,11 +56,15 @@ public class Usuario {
 	@JsonIgnore
 	private CurriculumLattes curriculum;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "usuarioId", orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonIgnore
 	private Set<Autoridade> autoridades = new HashSet<>();
 
 	@OneToMany(mappedBy = "coordenador", orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Grupo> grupos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "espectadores", orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Grupo> gruposEspectadores = new ArrayList<>();
 }

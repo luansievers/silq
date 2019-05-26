@@ -1,8 +1,8 @@
 package br.ufsc.silq.core.parser;
 
-import java.util.Arrays;
-
 import br.ufsc.silq.core.parser.dto.ParserSet;
+
+import java.util.Arrays;
 
 public class ParserSets {
 

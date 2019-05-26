@@ -1,7 +1,6 @@
 package br.ufsc.silq.security;
 
 import br.ufsc.silq.config.Profiles;
-
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 

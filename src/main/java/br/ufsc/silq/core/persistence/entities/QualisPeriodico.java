@@ -1,15 +1,14 @@
 package br.ufsc.silq.core.persistence.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)

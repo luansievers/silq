@@ -1,14 +1,9 @@
 package br.ufsc.silq.core.data;
 
 import br.ufsc.silq.core.forms.AvaliarForm;
-import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
-import br.ufsc.silq.core.service.AvaliacaoService;
-import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ClassificacaoCollectionResult {
 

@@ -1,8 +1,7 @@
 package br.ufsc.silq.core.forms;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Data
 public class GrupoForm {

@@ -1,8 +1,8 @@
 package br.ufsc.silq.core.data;
 
-import java.security.InvalidParameterException;
-
 import lombok.Data;
+
+import java.security.InvalidParameterException;
 
 @Data
 public class Periodo {

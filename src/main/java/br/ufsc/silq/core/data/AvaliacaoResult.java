@@ -1,15 +1,15 @@
 package br.ufsc.silq.core.data;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import br.ufsc.silq.core.forms.AvaliarForm;
 import br.ufsc.silq.core.parser.dto.Artigo;
 import br.ufsc.silq.core.parser.dto.DadosGeraisResult;
 import br.ufsc.silq.core.parser.dto.Trabalho;
 import lombok.Data;
 import net.sf.ehcache.pool.sizeof.annotations.IgnoreSizeOf;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Resultado da avaliação de um currículo Lattes, realizado pelo serviço {@link AvaliacaoResult}.

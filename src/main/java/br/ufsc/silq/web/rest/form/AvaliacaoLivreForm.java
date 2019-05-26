@@ -1,11 +1,10 @@
 package br.ufsc.silq.web.rest.form;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import br.ufsc.silq.core.cache.CurriculumCache;
 import br.ufsc.silq.core.forms.AvaliarForm;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 
 public class AvaliacaoLivreForm extends AvaliarForm {
 

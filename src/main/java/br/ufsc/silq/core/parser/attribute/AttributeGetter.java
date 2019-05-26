@@ -1,14 +1,13 @@
 package br.ufsc.silq.core.parser.attribute;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import br.ufsc.silq.core.parser.dto.ParserSet;
 import org.w3c.dom.Attr;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import br.ufsc.silq.core.parser.dto.ParserSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AttributeGetter {
 

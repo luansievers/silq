@@ -1,24 +1,6 @@
 package br.ufsc.silq.core.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nullable;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.validation.Valid;
-
 import br.ufsc.silq.core.data.*;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.querydsl.jpa.impl.JPAQuery;
-
 import br.ufsc.silq.core.exception.SilqError;
 import br.ufsc.silq.core.exception.SilqLattesException;
 import br.ufsc.silq.core.forms.AvaliarForm;
@@ -26,14 +8,23 @@ import br.ufsc.silq.core.parser.LattesParser;
 import br.ufsc.silq.core.parser.dto.Artigo;
 import br.ufsc.silq.core.parser.dto.ParseResult;
 import br.ufsc.silq.core.parser.dto.Trabalho;
-import br.ufsc.silq.core.persistence.entities.CurriculumLattes;
-import br.ufsc.silq.core.persistence.entities.FeedbackEvento;
-import br.ufsc.silq.core.persistence.entities.FeedbackPeriodico;
-import br.ufsc.silq.core.persistence.entities.QQualisPeriodico;
-import br.ufsc.silq.core.persistence.entities.QualisEvento;
-import br.ufsc.silq.core.persistence.entities.QualisPeriodico;
-import br.ufsc.silq.core.persistence.entities.Usuario;
+import br.ufsc.silq.core.persistence.entities.*;
+import com.querydsl.jpa.impl.JPAQuery;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)

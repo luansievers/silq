@@ -1,10 +1,10 @@
 package br.ufsc.silq.core.parser.dto;
 
-import java.util.Date;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.Date;
 
 @Data
 @EqualsAndHashCode(of = { "idCurriculo", "ultimaAtualizacao" })

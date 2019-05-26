@@ -33,7 +33,12 @@ angular.module('silq2App')
                         });
                 };
 
-                $scope.obterNotaSICLAP = function(ano, conceitos, titulo) {
+                $scope.obterNotaQUALIS = function(ano, conceitos) {
+                    var conceito = _.find(conceitos, function(p){ return p.ano === ano; });
+                    return conceito != null ? conceito.conceito : 'Não há avaliação Qualis neste ano' ;
+                };
+
+                $scope.obterNotaSICLAP = function(ano, conceitos) {
                     var CONCEITO_ENUM = {
                         A1: 8,
                         A2: 7,
@@ -67,8 +72,8 @@ angular.module('silq2App')
                     }
                     primeiroConceito = CONCEITO_ENUM[primeiroConceito != null ? primeiroConceito.conceito : "NA"];
                     segundoConceito = CONCEITO_ENUM[segundoConceito != null ? segundoConceito.conceito : "NA"];
-
-                    return CONCEITO_ENUM.properties[Math.max(primeiroConceito, segundoConceito)].name;
+                    var result = CONCEITO_ENUM.properties[Math.max(primeiroConceito, segundoConceito)].name;
+                    return result === 'NA' ? 'Não há avaliação Siclap para este ano' : result;
                 };
 
                 var getConceito = function(conceitos){

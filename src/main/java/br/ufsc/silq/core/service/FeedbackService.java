@@ -1,29 +1,23 @@
 package br.ufsc.silq.core.service;
 
-import java.util.Date;
-import java.util.Optional;
-
-import javax.inject.Inject;
-import javax.validation.Valid;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import br.ufsc.silq.core.data.Conceito;
 import br.ufsc.silq.core.data.NivelSimilaridade;
 import br.ufsc.silq.core.data.SimilarityResult;
 import br.ufsc.silq.core.data.TipoConceito;
 import br.ufsc.silq.core.forms.FeedbackEventoForm;
 import br.ufsc.silq.core.forms.FeedbackPeriodicoForm;
-import br.ufsc.silq.core.persistence.entities.FeedbackEvento;
-import br.ufsc.silq.core.persistence.entities.FeedbackPeriodico;
-import br.ufsc.silq.core.persistence.entities.QualisEvento;
-import br.ufsc.silq.core.persistence.entities.QualisPeriodico;
-import br.ufsc.silq.core.persistence.entities.Usuario;
+import br.ufsc.silq.core.persistence.entities.*;
 import br.ufsc.silq.core.persistence.repository.FeedbackEventoRepository;
 import br.ufsc.silq.core.persistence.repository.FeedbackPeriodicoRepository;
 import br.ufsc.silq.core.persistence.repository.QualisEventoRepository;
 import br.ufsc.silq.core.persistence.repository.QualisPeriodicoRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
+import java.util.Date;
+import java.util.Optional;
 
 @Service
 @Transactional

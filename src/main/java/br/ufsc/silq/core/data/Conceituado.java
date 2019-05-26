@@ -1,16 +1,15 @@
 package br.ufsc.silq.core.data;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.ufsc.silq.core.parser.dto.Artigo;
 import br.ufsc.silq.core.parser.dto.Trabalho;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Encapsula um objeto qualquer (geralmente um {@link Artigo} ou {@link Trabalho} que foi conceituado.
@@ -94,7 +93,7 @@ public class Conceituado<T extends Comparable<T>> implements Comparable<Conceitu
 		return this.conceitos.isEmpty() || this.feedbackNegativo ? null : this.conceitos.get(0);
 	}
 
-	@Override
+    @Override
 	public int compareTo(Conceituado<T> o) {
 		return this.obj.compareTo(o.obj);
 	}

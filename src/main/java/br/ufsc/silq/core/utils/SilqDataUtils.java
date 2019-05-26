@@ -1,11 +1,11 @@
 package br.ufsc.silq.core.utils;
 
+import br.ufsc.silq.core.parser.dto.DataDto;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
-import br.ufsc.silq.core.parser.dto.DataDto;
 
 public class SilqDataUtils {
 

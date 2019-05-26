@@ -1,22 +1,20 @@
 package br.ufsc.silq.core.service;
 
-import java.util.ArrayList;
-
-import javax.inject.Inject;
-import javax.validation.Valid;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import br.ufsc.silq.core.data.SimilarityResult;
 import br.ufsc.silq.core.forms.QualisSearchForm;
 import br.ufsc.silq.core.persistence.entities.QualisEvento;
 import br.ufsc.silq.core.persistence.entities.QualisPeriodico;
 import br.ufsc.silq.core.persistence.repository.QualisEventoRepository;
 import br.ufsc.silq.core.persistence.repository.QualisPeriodicoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Service
 @Transactional

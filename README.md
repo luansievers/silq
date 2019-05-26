@@ -90,6 +90,10 @@ Para rodar a versão _standalone_ do projeto, utilizando um servidor Tomcat e at
 ```sh
 $ java -jar target/*.war --spring.profiles.active=prod
 ```
+ou
+````sh
+$ java -jar target/*.war --spring.profiles.active=dev --server.port=80 >> log.txt &
+````
 
 Então navegue para [http://localhost:8080](http://localhost:8080) in em seu navegador.
 

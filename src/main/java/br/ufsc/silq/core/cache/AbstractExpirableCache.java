@@ -1,14 +1,13 @@
 package br.ufsc.silq.core.cache;
 
+import lombok.ToString;
+import org.joda.time.LocalDateTime;
+import org.joda.time.Period;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
-import org.joda.time.LocalDateTime;
-import org.joda.time.Period;
-
-import lombok.ToString;
 
 /**
  * Cache abstrato que mapeia IDs (String) para listas de dados do tipo definido e que limpa os itens de cache

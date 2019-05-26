@@ -1,11 +1,11 @@
 package br.ufsc.silq.core.data;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import br.ufsc.silq.core.persistence.entities.Usuario;
 import br.ufsc.silq.security.AuthoritiesConstants;
 import lombok.Data;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Utilizado para retornar informações do usuário atualmente logado para o

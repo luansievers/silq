@@ -1,12 +1,11 @@
 package br.ufsc.silq.config;
 
-import javax.validation.constraints.NotNull;
-
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.cors.CorsConfiguration;
 
-import lombok.Getter;
-import lombok.Setter;
+import javax.validation.constraints.NotNull;
 
 /**
  * Properties specific to JHipster.
